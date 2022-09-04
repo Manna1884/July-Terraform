@@ -109,10 +109,6 @@ resource "aws_route" "public-igw-route" {
 resource "aws_eip" "EIP_Manna" {
   vpc                       = true
   associate_with_private_ip = "10.0.0.7"
-
-  tags = {
-    Name = "EIP_Manna"
-  }
 }
 
 
