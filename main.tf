@@ -1,6 +1,6 @@
 #My VPC
 resource "aws_vpc" "Manna-vpc" {
-  cidr_block       = "10.0.0.0/16"
+  cidr_block       = var.cidr-block-vpc
   instance_tenancy = "default"
 
   tags = {
@@ -11,7 +11,8 @@ resource "aws_vpc" "Manna-vpc" {
 #Public Subnet
 resource "aws_subnet" "public_sub1" {
   vpc_id     = aws_vpc.Manna-vpc.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.cidr-block-for-public-subnet1
+  availability_zone = var.availablilty-zone-public-subnet1
 
   tags = {
     Name = "public_sub1"
@@ -21,7 +22,8 @@ resource "aws_subnet" "public_sub1" {
 #Public Subnet
 resource "aws_subnet" "public_sub2" {
   vpc_id     = aws_vpc.Manna-vpc.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.cidr-block-for-public-subnet2
+  availability_zone = var.availablilty-zone-public-subnet2
 
   tags = {
     Name = "public_sub2"
@@ -31,7 +33,8 @@ resource "aws_subnet" "public_sub2" {
 #Private Subnet
 resource "aws_subnet" "private_sub1" {
   vpc_id     = aws_vpc.Manna-vpc.id
-  cidr_block = "10.0.3.0/24"
+  cidr_block = var.cidr-block-for-private-subnet1
+  availability_zone = var.availablilty-zone-private-subnet1
 
   tags = {
     Name = "private_sub1"
@@ -41,7 +44,8 @@ resource "aws_subnet" "private_sub1" {
 #Private Subnet
 resource "aws_subnet" "private_sub2" {
   vpc_id     = aws_vpc.Manna-vpc.id
-  cidr_block = "10.0.4.0/24"
+  cidr_block = var.cidr-block-for-private-subnet2
+  availability_zone = var.availablilty-zone-private-subnet2
 
   tags = {
     Name = "private_sub2"
